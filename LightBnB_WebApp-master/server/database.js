@@ -130,10 +130,10 @@ const getAllProperties = function(options, limit = 10) {
     queryString += `WHERE property_reviews.rating >= $${queryParams.length}`;
   }
 
-  // owner id one?
+  // OWNER ID FILTER
   if (options.owner_id) {
-    queryParams.push(`%${options.owner_id}%`);
-    queryString += `WHERE owner_id LIKE $${queryParams.length} `;
+    queryParams.push(options.owner_id);
+    queryString += `WHERE owner_id = $${queryParams.length} `;
   }
 
   // 4
